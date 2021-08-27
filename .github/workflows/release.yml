@@ -1,7 +1,7 @@
 name: Publish package to the Maven Staging Repository
 on:
   release:
-    types: [created]
+    types: [published]
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -16,8 +16,22 @@ jobs:
           server-id: ossrh
           server-username: MAVEN_USERNAME
           server-password: MAVEN_PASSWORD
+      - id: install-secret-key
+        name: Install gpg secret key
+        run: |
+          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
+          gpg --list-secret-keys --keyid-format LONG
       - name: Publish package
-        run: mvn --batch-mode versions:set -DnewVersion=${{ env.RELEASE_VERSION }} && mvn -s .m2/settings.xml --batch-mode deploy
+        run: |
+            mvn \
+              --batch-mode \
+              versions:set \
+              -DnewVersion=${{ env.RELEASE_VERSION }} \
+            && mvn \
+              --no-transfer-progress \
+              --batch-mode \
+              -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} \
+              clean deploy
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
