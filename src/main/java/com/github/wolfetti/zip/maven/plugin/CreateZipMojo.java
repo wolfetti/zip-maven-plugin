@@ -54,7 +54,7 @@ public class CreateZipMojo extends AbstractMojo {
     private File outputDirectory;
     
     /**
-     * The target folder.
+     * The output filename. If this parameters doesn't ends with '.zip' the extension will be added automatically.
      */
     @Parameter(property = "zip.outputFileName", defaultValue = "${project.artifactId}-${project.version}.zip")
     private String outputFileName;
