@@ -5,6 +5,21 @@
     <artifactId>zip-maven-plugin</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
+    <url>https://github.com/wolfetti/zip-maven-plugin</url>
+    <description>
+        Simple but efficient zip packaging plugin. 
+        
+        It can be used to attach an artifact to main build or to execute a zip build, with <![CDATA[<extensions>true</extensions>]]> 
+    </description>
+    
+    <developers>
+        <developer>
+            <name>Wolfetti</name>
+            <organization>Wolfetti</organization>
+            <organizationUrl>https://github.com/wolfetti</organizationUrl>
+        </developer>
+    </developers>
+
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,7 +44,8 @@
  
     <scm>
         <url>https://github.com/wolfetti/zip-maven-plugin</url>
-        <developerConnection>scm:git:https://github.com/wolfetti/zip-maven-plugin.git</developerConnection>
+        <connection>scm:git:git://github.com/wolfetti/zip-maven-plugin.git</connection>
+        <developerConnection>scm:git:ssh://github.com:wolfetti/zip-maven-plugin.git</developerConnection>
     </scm>
     
     <distributionManagement>
