@@ -21,4 +21,4 @@ a maven plugin for creating zip artifacts.
 Because assembly can't provide zip packaging type.
 
 # Usage
-Plugin documentation is available [here](https://github.com/wolfetti/zip-maven-plugin/usage.html)
+Plugin documentation is available [here](https://wolfetti.github.io/zip-maven-plugin)
